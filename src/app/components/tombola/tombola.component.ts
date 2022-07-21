@@ -12,6 +12,7 @@ export class TombolaComponent implements OnInit {
   height = '100%';
   title = 'Tombola';
 
+  isPresente : boolean = true
   numeroEstratto : number = 0
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = [0]
@@ -29,12 +30,17 @@ export class TombolaComponent implements OnInit {
   estrazione() {
     this.numeroEstratto = 1 + Math.floor(Math.random() * 90)
     for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
-      if (this.numeroEstratto != this.vettoreNumeriEstratti[item]) {
-        this.vettoreNumeriEstratti.push(this.numeroEstratto)
-        break
+      if (this.numeroEstratto == this.vettoreNumeriEstratti[item]) {
+        this.isPresente = true
+        break;
+      }else{
+        this.isPresente = false
       }
-      console.log("ITEM: " + item)
+      // console.log("ITEM: " + item)
     }
+    if(!this.isPresente)
+      this.vettoreNumeriEstratti.push(this.numeroEstratto)
+
     console.log(this.vettoreNumeriEstratti)
   }
 
