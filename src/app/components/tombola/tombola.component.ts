@@ -11,16 +11,23 @@ export class TombolaComponent implements OnInit {
   rows = 9;
   height = '15%';
   title = 'Tombola';
+  colsCartella = 5;
+  rowsCartella = 3;
 
   isPresente : boolean = true
   numeroEstratto : number = 0
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = []
+  cartella : number[] = [8,10,15,25,90,10,11,70,69,44,23,21,77,80,1]
 
   constructor() {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
     this.setStyle('--height', this.height);
+    this.setStyle('--rowsCartella', this.rowsCartella);
+    this.setStyle('--colsCartella', this.colsCartella);
+
+
   }
 
   ngOnInit(): void {
