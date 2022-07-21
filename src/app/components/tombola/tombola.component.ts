@@ -11,8 +11,11 @@ export class TombolaComponent implements OnInit {
   rows = 9;
   height = '15%';
   title = 'Tombola';
+
   colsCartella = 5;
   rowsCartella = 3;
+  heightCartella = '30%';
+  titleCartella = 'Cartella';
 
   isPresente : boolean = true
   numeroEstratto : number = 0
@@ -26,6 +29,8 @@ export class TombolaComponent implements OnInit {
     this.setStyle('--height', this.height);
     this.setStyle('--rowsCartella', this.rowsCartella);
     this.setStyle('--colsCartella', this.colsCartella);
+    this.setStyle('--heightCartella', this.heightCartella);
+
 
 
   }
