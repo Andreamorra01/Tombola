@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TombolaComponent implements OnInit {
   cols = 10;
   rows = 9;
-  height = '100%';
+  height = '15%';
   title = 'Tombola';
 
   isPresente : boolean = true
