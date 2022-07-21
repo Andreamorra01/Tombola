@@ -14,6 +14,7 @@ export class TombolaComponent implements OnInit {
 
   numeroEstratto : number = 0
   numeri : number[] = [];
+  vettoreNumeriEstratti : number[] = [0]
 
   constructor() {
     this.setStyle('--rows', this.rows);
@@ -23,10 +24,25 @@ export class TombolaComponent implements OnInit {
 
   ngOnInit(): void {
     this.riempiTabellone()
+    console.log(this.vettoreNumeriEstratti.length)
+    this.prova()
+  }
+
+  prova() {
+    for (let i = 0 ; i < this.vettoreNumeriEstratti.length ; i++) {
+      console.log("ciao")
+    }
   }
 
   estrazione() {
     this.numeroEstratto = 1 + Math.floor(Math.random() * 90)
+    for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
+      if (this.numeroEstratto != this.vettoreNumeriEstratti[item]) {
+        this.vettoreNumeriEstratti.push(this.numeroEstratto)
+      }
+      console.log("ITEM: " + item)
+    }
+    console.log(this.vettoreNumeriEstratti)
   }
 
   riempiTabellone() {
