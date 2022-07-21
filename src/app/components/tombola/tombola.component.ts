@@ -21,7 +21,7 @@ export class TombolaComponent implements OnInit {
   numeroEstratto : number = 0
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = []
-  cartella : number[] = [8,10,15,25,90,10,11,70,69,44,23,21,77,80,1]
+  cartella : number[] = []
 
   constructor() {
     this.setStyle('--rows', this.rows);
@@ -30,13 +30,11 @@ export class TombolaComponent implements OnInit {
     this.setStyle('--rowsCartella', this.rowsCartella);
     this.setStyle('--colsCartella', this.colsCartella);
     this.setStyle('--heightCartella', this.heightCartella);
-
-
-
   }
 
   ngOnInit(): void {
     this.riempiTabellone()
+    this.generaCartella()
   }
 
   estrazione() {
@@ -72,5 +70,22 @@ export class TombolaComponent implements OnInit {
         return 'red';
     }
     return 'black'
+  }
+
+  generaCartella() {
+    let isEsistente = false
+    let random = 0
+    for (let item = 0 ; item < 15 ; item++) {
+      random = 1 + Math.floor(Math.random() * 90)
+      this.cartella.push(random)
+      if (random != this.cartella[item]) {
+        isEsistente = true
+        break;
+      } else {
+        isEsistente = false
+      }
+    }
+    // if (!isEsistente)
+    // this.cartella.push(random)
   }
 }
