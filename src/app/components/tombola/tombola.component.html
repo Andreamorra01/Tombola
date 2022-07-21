@@ -1,0 +1,15 @@
+<div>
+  <button (click)="estrazione()">Estrai un numero</button>
+  <h3>{{ numeroEstratto }}</h3>
+  <h2>{{title}}</h2>
+  <ul>
+    <li *ngFor="let item of numeri">
+      <span *ngIf="item == numeroEstratto">
+      <span style="color: red">{{item}}</span>
+    </span>
+    <span *ngIf="item != numeroEstratto">
+      {{item}}
+    </span>
+    </li>
+  </ul>
+</div>
