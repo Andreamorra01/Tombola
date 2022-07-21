@@ -24,14 +24,6 @@ export class TombolaComponent implements OnInit {
 
   ngOnInit(): void {
     this.riempiTabellone()
-    console.log(this.vettoreNumeriEstratti.length)
-    this.prova()
-  }
-
-  prova() {
-    for (let i = 0 ; i < this.vettoreNumeriEstratti.length ; i++) {
-      console.log("ciao")
-    }
   }
 
   estrazione() {
@@ -39,6 +31,7 @@ export class TombolaComponent implements OnInit {
     for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
       if (this.numeroEstratto != this.vettoreNumeriEstratti[item]) {
         this.vettoreNumeriEstratti.push(this.numeroEstratto)
+        break
       }
       console.log("ITEM: " + item)
     }
