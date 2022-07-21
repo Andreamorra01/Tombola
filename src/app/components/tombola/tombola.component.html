@@ -4,9 +4,11 @@
   <h2>{{title}}</h2>
   <ul>
     <li *ngFor="let item of numeri">
-      <span *ngIf="item == numeroEstratto">
-      <span style="color: red">{{item}}</span>
-    </span>
+      <span *ngFor="let elem of vettoreNumeriEstratti">
+       <span *ngIf="item==elem">
+        <span style="color: red">{{item}}</span>
+       </span>
+      </span>
     <span *ngIf="item != numeroEstratto">
       {{item}}
     </span>
