@@ -76,7 +76,7 @@ export class TombolaComponent implements OnInit {
     let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 15)
+      random = 1 + Math.floor(Math.random() * 90)
       console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
