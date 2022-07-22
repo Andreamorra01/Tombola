@@ -23,6 +23,7 @@ export class TombolaComponent implements OnInit {
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = []
   cartella : number[] = []
+  vettoreVittoria : number[] = []
 
   constructor() {
     this.setStyle('--rows', this.rows);
@@ -39,7 +40,7 @@ export class TombolaComponent implements OnInit {
   }
 
   estrazione() {
-    this.numeroEstratto = 1 + Math.floor(Math.random() * 90)
+    this.numeroEstratto = 1 + Math.floor(Math.random() * 15)
     for (let item = 0 ; item <= this.vettoreNumeriEstratti.length ; item++) {
       if (this.numeroEstratto == this.vettoreNumeriEstratti[item]) {
         this.isPresente = true
@@ -49,8 +50,11 @@ export class TombolaComponent implements OnInit {
       }
       // console.log("ITEM: " + item)
     }
-    if(!this.isPresente)
+    if(!this.isPresente) {
       this.vettoreNumeriEstratti.push(this.numeroEstratto)
+      this.vittoria(this.numeroEstratto)
+    }
+
 
     // console.log(this.vettoreNumeriEstratti)
   }
@@ -79,7 +83,7 @@ export class TombolaComponent implements OnInit {
     let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 90)
+      random = 1 + Math.floor(Math.random() * 15)
       // console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
@@ -110,8 +114,6 @@ export class TombolaComponent implements OnInit {
         isEstratto = false
     }
 
-    this.vittoria()
-
     if (isEstratto)
       return 'red'
     else
@@ -119,18 +121,16 @@ export class TombolaComponent implements OnInit {
 
   }
 
-  vittoria() {
-    let vettore = []
+  vittoria(numeroEstratto : number) {
     for (let item = 0 ; item < this.cartella.length ; item ++) {
-      for (let elem = 0 ; elem < this.vettoreNumeriEstratti.length ; elem++) {
-        if (this.cartella[item] == this.vettoreNumeriEstratti[elem]) {
-          vettore.push(this.cartella[item])
+      // for (let elem = 0 ; elem < this.vettoreNumeriEstratti.length ; elem++) {
+        if (this.cartella[item] == numeroEstratto) {
+          this.vettoreVittoria.push(this.cartella[item])
           // console.log(vettore)
-          break
-        }
+        //}
       }
     }
-    if (vettore.length == 15) {
+    if (this.vettoreVittoria.length == 15) {
       alert("Hai vinto")
     }
   }
