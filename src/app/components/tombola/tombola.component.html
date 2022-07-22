@@ -15,7 +15,7 @@
   <h2>{{titleCartella}}</h2>
   <ul class="ulCartella">
     <li *ngFor="let el of cartella">
-      <span [ngStyle]="{color: toggleActive(el)}">{{el}}</span>
+      <span [ngStyle]="{color: controlloCartella(el)}">{{el}}</span>
     </li>
   </ul>
 </div>

@@ -39,7 +39,7 @@ export class TombolaComponent implements OnInit {
   }
 
   estrazione() {
-    this.numeroEstratto = 1 + Math.floor(Math.random() * 15)
+    this.numeroEstratto = 1 + Math.floor(Math.random() * 90)
     for (let item = 0 ; item <= this.vettoreNumeriEstratti.length ; item++) {
       if (this.numeroEstratto == this.vettoreNumeriEstratti[item]) {
         this.isPresente = true
@@ -79,7 +79,7 @@ export class TombolaComponent implements OnInit {
     let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 15)
+      random = 1 + Math.floor(Math.random() * 90)
       // console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
@@ -99,11 +99,11 @@ export class TombolaComponent implements OnInit {
 
   }
 
-  toggleActive(elementoCliccato : any) {
+  controlloCartella(elemento : any) {
     let isEstratto = false
     // console.log(elementoCliccato)
     for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
-      if (elementoCliccato == this.vettoreNumeriEstratti[item]) {
+      if (elemento == this.vettoreNumeriEstratti[item]) {
         isEstratto = true
         break;
       } else
@@ -130,9 +130,9 @@ export class TombolaComponent implements OnInit {
         }
       }
     }
-    if (vettore.length == 15)
-     alert("Hai vinto")
-
+    if (vettore.length == 15) {
+      alert("Hai vinto")
+    }
   }
 }
 
