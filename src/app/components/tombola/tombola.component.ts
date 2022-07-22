@@ -73,17 +73,25 @@ export class TombolaComponent implements OnInit {
   }
 
   generaCartella() {
-    let isEsistente = false
+    let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 90)
-      this.cartella.push(random)
-      if (this.cartella[item-1] == this.cartella[item]) {
-        isEsistente = true
-        break;
-      } else {
-        isEsistente = false
-      }
+      random = 1 + Math.floor(Math.random() * 15)
+      console.log("Numero Random: " + random)
+      if (item == 0)
+        this.cartella.push(random)
+      else
+        for (let index = 0 ; index < this.cartella.length ; index++) {
+          if (random == this.cartella[index]) {
+            isEsistente = true
+            item--
+            break;
+          } else {
+            isEsistente = false
+          }
+        }
+        if (!isEsistente)
+          this.cartella.push(random)
     }
 
   }
