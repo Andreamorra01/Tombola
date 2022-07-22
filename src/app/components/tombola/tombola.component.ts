@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { bindCallback } from 'rxjs';
 
 @Component({
   selector: 'app-tombola',
@@ -14,7 +15,7 @@ export class TombolaComponent implements OnInit {
 
   colsCartella = 5;
   rowsCartella = 3;
-  heightCartella = '30%';
+  heightCartella = '45%';
   titleCartella = 'Cartella';
 
   isPresente : boolean = true
@@ -72,11 +73,13 @@ export class TombolaComponent implements OnInit {
     return 'black'
   }
 
+
+
   generaCartella() {
     let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 90)
+      random = 1 + Math.floor(Math.random() * 15)
       console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
@@ -93,6 +96,24 @@ export class TombolaComponent implements OnInit {
         if (!isEsistente)
           this.cartella.push(random)
     }
+
+  }
+
+  toggleActive(elementoCliccato : any) {
+    let isEstratto = false
+    console.log(elementoCliccato)
+    for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
+      if (elementoCliccato == this.vettoreNumeriEstratti[item]) {
+        isEstratto = true
+        break;
+      } else
+        isEstratto = false
+    }
+
+    if (isEstratto)
+      return 'red'
+    else
+      return 'black'
 
   }
 }

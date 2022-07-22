@@ -14,9 +14,9 @@
 <div class="cartella">
   <h2>{{titleCartella}}</h2>
   <ul class="ulCartella">
-  <li *ngFor="let el of cartella">
-    {{el}}
-  </li>
+    <li *ngFor="let el of cartella">
+      <span [ngStyle]="{color: toggleActive(el)}">{{el}}</span>
+    </li>
   </ul>
 </div>
 

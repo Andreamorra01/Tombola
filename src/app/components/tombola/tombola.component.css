@@ -48,3 +48,8 @@ h2 {
   padding:0;
   margin:0;
 }
+
+.bottoneCartella {
+  background-color: white;
+  border: black
+}
