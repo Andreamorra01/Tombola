@@ -6,6 +6,11 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./scheda.component.css']
 })
 export class SchedaComponent implements OnInit {
+  colsCartella = 5;
+  rowsCartella = 3;
+  heightCartella = '45%';
+
+
   cartella : number[] = []
   titleCartella = 'Cartella';
   numeriEstrattiCartella:number[] = []
@@ -13,7 +18,14 @@ export class SchedaComponent implements OnInit {
   @Input() numeroEstratto:number = 0 ;
 
 
-  constructor() { }
+  constructor() {
+    this.setStyle('--rowsCartella', this.rowsCartella);
+    this.setStyle('--colsCartella', this.colsCartella);
+    this.setStyle('--heightCartella', this.heightCartella);
+  }
+  setStyle(s: any, v: any) {
+    document.documentElement.style.setProperty(s, v);
+  }
 
   ngOnInit(): void {
     this.generaCartella()
@@ -43,7 +55,9 @@ export class SchedaComponent implements OnInit {
   }
   coloraNumeriEstrattiCartella(elemento : any) {
     let isEstratto = false
-    // console.log(elementoCliccato)
+
+    this.controllaNumeriEstratti()
+
     for (let item = 0 ; item < this.numeriEstrattiCartella.length ; item++) {
       if (elemento == this.numeriEstrattiCartella[item]) {
         isEstratto = true
@@ -62,9 +76,6 @@ export class SchedaComponent implements OnInit {
     for (let el = 0; el < this.cartella.length; el++) {
       if (this.numeroEstratto == this.cartella[el])
         this.numeriEstrattiCartella.push(this.numeroEstratto)
-        console.log(this.numeriEstrattiCartella);
-
-
     }
   }
 }
