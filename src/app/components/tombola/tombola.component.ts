@@ -39,7 +39,7 @@ export class TombolaComponent implements OnInit {
   }
 
   estrazione() {
-    this.numeroEstratto = 1 + Math.floor(Math.random() * 90)
+    this.numeroEstratto = 1 + Math.floor(Math.random() * 15)
     for (let item = 0 ; item <= this.vettoreNumeriEstratti.length ; item++) {
       if (this.numeroEstratto == this.vettoreNumeriEstratti[item]) {
         this.isPresente = true
@@ -52,7 +52,7 @@ export class TombolaComponent implements OnInit {
     if(!this.isPresente)
       this.vettoreNumeriEstratti.push(this.numeroEstratto)
 
-    console.log(this.vettoreNumeriEstratti)
+    // console.log(this.vettoreNumeriEstratti)
   }
 
   riempiTabellone() {
@@ -80,7 +80,7 @@ export class TombolaComponent implements OnInit {
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
       random = 1 + Math.floor(Math.random() * 15)
-      console.log("Numero Random: " + random)
+      // console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
       else
@@ -101,7 +101,7 @@ export class TombolaComponent implements OnInit {
 
   toggleActive(elementoCliccato : any) {
     let isEstratto = false
-    console.log(elementoCliccato)
+    // console.log(elementoCliccato)
     for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
       if (elementoCliccato == this.vettoreNumeriEstratti[item]) {
         isEstratto = true
@@ -110,10 +110,28 @@ export class TombolaComponent implements OnInit {
         isEstratto = false
     }
 
+    this.vittoria()
+
     if (isEstratto)
       return 'red'
     else
       return 'black'
+
+  }
+
+  vittoria() {
+    let vettore = []
+    for (let item = 0 ; item < this.cartella.length ; item ++) {
+      for (let elem = 0 ; elem < this.vettoreNumeriEstratti.length ; elem++) {
+        if (this.cartella[item] == this.vettoreNumeriEstratti[elem]) {
+          vettore.push(this.cartella[item])
+          // console.log(vettore)
+          break
+        }
+      }
+    }
+    if (vettore.length == 15)
+     alert("Hai vinto")
 
   }
 }
