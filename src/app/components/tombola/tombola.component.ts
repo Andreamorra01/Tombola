@@ -26,6 +26,7 @@ export class TombolaComponent implements OnInit {
   numeriDisponiili : number[] = []
   isReset = false
   giocatori : number[] = []
+  numeroGiocatori :number = 0
 
   constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
@@ -89,13 +90,16 @@ export class TombolaComponent implements OnInit {
     }
     return 'black'
   }
-
-  giocatoriRegistrati(e : any) {
-    for (let item = 1 ; item <= e.target.value ; item++) {
+  scegliNumeroGiocatori(e:any){
+    this.numeroGiocatori = e.target.value
+    console.log(this.numeroGiocatori)
+  }
+  giocatoriRegistrati() {
+    for (let item = 1 ; item <= this.numeroGiocatori ; item++) {
       this.giocatori.push(item)
+      console.log(item);
     }
   }
-
 
 }
 

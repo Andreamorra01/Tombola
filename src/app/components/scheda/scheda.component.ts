@@ -18,7 +18,6 @@ export class SchedaComponent implements OnInit {
 
   @Input() numeroEstratto : number = 0 ;
   @Input() isReset : boolean = false;
-
   @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
 
 
