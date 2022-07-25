@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { bindCallback } from 'rxjs';
 
 @Component({
@@ -26,8 +26,9 @@ export class TombolaComponent implements OnInit {
   vettoreVittoria : number[] = []
 
   numeriDisponiili : number[] = []
+  isReset = false
 
-  constructor() {
+  constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
     this.setStyle('--height', this.height);
@@ -45,7 +46,7 @@ export class TombolaComponent implements OnInit {
   }
   generaDisponibili(){
     for (let item = 1 ; item < 91 ; item++)
-    this.numeriDisponiili.push(item)
+      this.numeriDisponiili.push(item)
     console.log("Numeri disponibili: " + this.numeriDisponiili)
   }
 
@@ -58,6 +59,16 @@ export class TombolaComponent implements OnInit {
   reset(){
     this.vettoreNumeriEstratti = []
     this.numeroEstratto = 0
+    this.isReset = true
+    this.numeriDisponiili = []
+    this.generaDisponibili()
+  }
+
+  aggiornoReset() {
+    this.isReset = false
+    this.cdRef.detectChanges();
+
+
   }
 
   estrazione() {
@@ -69,6 +80,7 @@ export class TombolaComponent implements OnInit {
     // console.log("VETTORE AGGIORNATO: " + this.numeriDisponiili);
     this.vettoreNumeriEstratti.push(this.numeroEstratto)
     console.log(this.vettoreNumeriEstratti)
+    console.log("LUNGHEZZA: " + this.numeriDisponiili.length)
   }
 
   controllo(valoreDaControllare: number) {

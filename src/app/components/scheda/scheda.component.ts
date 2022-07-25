@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,SimpleChanges } from '@angular/core';
+import { Component, OnInit,Input,SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-scheda',
@@ -15,7 +15,10 @@ export class SchedaComponent implements OnInit {
   titleCartella = 'Cartella';
   numeriEstrattiCartella:number[] = []
 
-  @Input() numeroEstratto:number = 0 ;
+  @Input() numeroEstratto : number = 0 ;
+  @Input() isReset : boolean = false;
+
+  @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
 
 
   constructor() {
@@ -29,13 +32,17 @@ export class SchedaComponent implements OnInit {
 
   ngOnInit(): void {
     this.generaCartella()
+    console.log("SONO NEL FIGLIO. RESET -> " + this.isReset)
   }
 
   generaCartella() {
+    this.cartella = []
+    console.log("STO GENERANDO");
+
     let isEsistente = true
     let random = 0
     for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 15)
+      random = 1 + Math.floor(Math.random() * 90)
       // console.log("Numero Random: " + random)
       if (item == 0)
         this.cartella.push(random)
@@ -73,19 +80,32 @@ export class SchedaComponent implements OnInit {
   ngOnChanges(changes:SimpleChanges){
     console.log(changes);
 
-    if(changes['numeroEstratto'].currentValue){
-      for (let el = 0; el < this.cartella.length; el++) {
-        if (changes['numeroEstratto'].currentValue === this.cartella[el])
-          this.numeriEstrattiCartella.push(changes['numeroEstratto'].currentValue)
-          // console.log(this.numeriEstrattiCartella);
-          console.log(changes['numeroEstratto'].currentValue);
-      }
-      if (this.numeriEstrattiCartella.length == 15) {
-        alert("hai vinto")
-        console.log(this.numeriEstrattiCartella);
+    if(changes['numeroEstratto']) {
+      if(changes['numeroEstratto'].currentValue){
+        for (let el = 0; el < this.cartella.length; el++) {
+          if (changes['numeroEstratto'].currentValue === this.cartella[el])
+            this.numeriEstrattiCartella.push(changes['numeroEstratto'].currentValue)
+            // console.log(this.numeriEstrattiCartella);
+            console.log(changes['numeroEstratto'].currentValue);
+        }
+        if (this.numeriEstrattiCartella.length == 15) {
+          alert("hai vinto")
+          console.log(this.numeriEstrattiCartella);
 
 
+        }
       }
+    }
+
+    if(changes['isReset']) {
+      if(changes['isReset'].currentValue) {
+        this.generaCartella()
+        this.numeriEstrattiCartella = []
+        this.cartellaCambiata.emit(true);
+        console.log(this.cartella);
+      }
+
+
     }
 
   }
