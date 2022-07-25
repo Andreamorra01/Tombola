@@ -28,11 +28,16 @@ export class TombolaComponent implements OnInit {
   giocatori : number[] = []
   numeroGiocatori :number = 0
 
-  tabella = {
-    numeroPartita : 0,
-    nomeVincitore : "",
-    numeroMosse : 0
-  }
+  storicoPartite : Tabella[] = [
+    // {
+    //   numeroPartita : 0,
+    //   nomeVincitore : "",
+    //   numeroMosse : 0
+    // }
+  ]
+
+  contatorePartite : number = 0
+  contatoreMosse : number = 0
 
   constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
@@ -69,7 +74,8 @@ export class TombolaComponent implements OnInit {
     this.numeriDisponiili = []
     this.generaDisponibili()
     this.giocatori = []
-    this.tabella.nomeVincitore = ""
+
+    this.contatoreMosse = 0
   }
 
   aggiornoReset() {
@@ -89,6 +95,8 @@ export class TombolaComponent implements OnInit {
     this.vettoreNumeriEstratti.push(this.numeroEstratto)
     console.log(this.vettoreNumeriEstratti)
     console.log("LUNGHEZZA: " + this.numeriDisponiili.length)
+    this.contatoreMosse++
+    console.log("CONTATORE MOSSE EFFETTUATE: " + this.contatoreMosse)
   }
 
   controllo(valoreDaControllare: number) {
@@ -112,10 +120,22 @@ export class TombolaComponent implements OnInit {
 
   stampaTabella(nome : string) {
     console.log("NOME VINCITORE: " + nome)
-    this.tabella.nomeVincitore = nome
+    this.contatorePartite++
+    this.storicoPartite.push({
+      numeroPartita : this.contatorePartite,
+      nomeVincitore : nome,
+      numeroMosse : this.contatoreMosse
+    })
 
     this.cdRef.detectChanges();
+    console.log(this.storicoPartite)
   }
 
+}
+
+interface Tabella {
+  numeroPartita : number,
+  nomeVincitore : string,
+  numeroMosse : number
 }
 

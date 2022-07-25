@@ -1,7 +1,15 @@
 <input type="text" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)">
 <button (click)="giocatoriRegistrati()">Conferma</button>
 
-<h1>Nome vincitore : {{tabella.nomeVincitore}}</h1>
+<!-- <h1>Nome vincitore : {{ storicoPartite[0].nomeVincitore }}</h1>
+<h1>Numero mosse effettuate : {{ storicoPartite[0].numeroMosse }}</h1>
+<h1>Numero partita : {{ storicoPartite[0].numeroPartita }}</h1> -->
+
+<div *ngFor="let item of storicoPartite">
+  <h1>Nome vincitore : {{ item.nomeVincitore }}</h1>
+  <h1>Numero mosse effettuate : {{ item.numeroMosse }}</h1>
+  <h1>Numero partita : {{ item.numeroPartita }}</h1>
+</div>
 
 <div>
   <button (click)="estrazione()">Estrai un numero</button>
