@@ -19,6 +19,7 @@ export class SchedaComponent implements OnInit {
   @Input() numeroEstratto : number = 0 ;
   @Input() isReset : boolean = false;
   @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
+  @Output() nomeVincitore: EventEmitter<string> = new EventEmitter()
 
 
   constructor() {
@@ -90,7 +91,8 @@ export class SchedaComponent implements OnInit {
         }
         if (this.numeriEstrattiCartella.length == 15) {
           alert("Ha vinto il giocatore " + this.nickname)
-          console.log(this.numeriEstrattiCartella);
+          // console.log(this.numeriEstrattiCartella);
+          this.nomeVincitore.emit(this.nickname)
 
 
         }

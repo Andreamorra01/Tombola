@@ -28,6 +28,12 @@ export class TombolaComponent implements OnInit {
   giocatori : number[] = []
   numeroGiocatori :number = 0
 
+  tabella = {
+    numeroPartita : 0,
+    nomeVincitore : "",
+    numeroMosse : 0
+  }
+
   constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
@@ -63,6 +69,7 @@ export class TombolaComponent implements OnInit {
     this.numeriDisponiili = []
     this.generaDisponibili()
     this.giocatori = []
+    this.tabella.nomeVincitore = ""
   }
 
   aggiornoReset() {
@@ -101,6 +108,13 @@ export class TombolaComponent implements OnInit {
       this.giocatori.push(item)
       console.log(item);
     }
+  }
+
+  stampaTabella(nome : string) {
+    console.log("NOME VINCITORE: " + nome)
+    this.tabella.nomeVincitore = nome
+
+    this.cdRef.detectChanges();
   }
 
 }

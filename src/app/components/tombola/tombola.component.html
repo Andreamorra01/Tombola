@@ -1,6 +1,8 @@
 <input type="text" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)">
 <button (click)="giocatoriRegistrati()">Conferma</button>
 
+<h1>Nome vincitore : {{tabella.nomeVincitore}}</h1>
+
 <div>
   <button (click)="estrazione()">Estrai un numero</button>
   <button (click)="reset()">Reset</button>
@@ -16,7 +18,7 @@
   </ul>
 </div>
 <div *ngFor="let item of giocatori">
-  <app-scheda [numeroEstratto]="numeroEstratto" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()"></app-scheda>
+  <app-scheda [numeroEstratto]="numeroEstratto" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
 </div>
 <!-- <h1>{{numeroEstratto}}</h1> -->
 
