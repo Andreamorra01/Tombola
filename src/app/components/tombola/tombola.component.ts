@@ -33,10 +33,18 @@ export class TombolaComponent implements OnInit {
     this.setStyle('--colsCartella', this.colsCartella);
     this.setStyle('--heightCartella', this.heightCartella);
   }
+  setStyle(s: any, v: any) {
+    document.documentElement.style.setProperty(s, v);
+  }
 
   ngOnInit(): void {
     this.riempiTabellone()
     this.generaCartella()
+  }
+  riempiTabellone() {
+    for (let item = 1 ; item < 91 ; item ++) {
+      this.numeri.push(item)
+    }
   }
 
   estrazione() {
@@ -54,19 +62,7 @@ export class TombolaComponent implements OnInit {
       this.vettoreNumeriEstratti.push(this.numeroEstratto)
       this.vittoria(this.numeroEstratto)
     }
-
-
     // console.log(this.vettoreNumeriEstratti)
-  }
-
-  riempiTabellone() {
-    for (let item = 1 ; item < 91 ; item ++) {
-      this.numeri.push(item)
-    }
-  }
-
-  setStyle(s: any, v: any) {
-    document.documentElement.style.setProperty(s, v);
   }
 
   controllo(valoreDaControllare: number) {
@@ -76,8 +72,6 @@ export class TombolaComponent implements OnInit {
     }
     return 'black'
   }
-
-
 
   generaCartella() {
     let isEsistente = true
@@ -118,7 +112,6 @@ export class TombolaComponent implements OnInit {
       return 'red'
     else
       return 'black'
-
   }
 
   vittoria(numeroEstratto : number) {

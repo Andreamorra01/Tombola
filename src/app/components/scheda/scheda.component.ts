@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-scheda',
@@ -28,54 +28,72 @@ export class SchedaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.generaCartella()
+    // this.generaCartella()
   }
 
-  generaCartella() {
-    let isEsistente = true
-    let random = 0
-    for (let item = 0 ; item < 15 ; item++) {
-      random = 1 + Math.floor(Math.random() * 15)
-      // console.log("Numero Random: " + random)
-      if (item == 0)
-        this.cartella.push(random)
-      else
-        for (let index = 0 ; index < this.cartella.length ; index++) {
-          if (random == this.cartella[index]) {
-            isEsistente = true
-            item--
-            break;
-          } else {
-            isEsistente = false
-          }
-        }
-        if (!isEsistente)
-          this.cartella.push(random)
-    }
-  }
-  coloraNumeriEstrattiCartella(elemento : any) {
-    let isEstratto = false
+  // generaCartella() {
+  //   let isEsistente = true
+  //   let random = 0
+  //   for (let item = 0 ; item < 15 ; item++) {
+  //     random = 1 + Math.floor(Math.random() * 15)
+  //     // console.log("Numero Random: " + random)
+  //     if (item == 0)
+  //       this.cartella.push(random)
+  //     else
+  //       for (let index = 0 ; index < this.cartella.length ; index++) {
+  //         if (random == this.cartella[index]) {
+  //           isEsistente = true
+  //           item--
+  //           break;
+  //         } else {
+  //           isEsistente = false
+  //         }
+  //       }
+  //       if (!isEsistente)
+  //         this.cartella.push(random)
+  //   }
+  // }
+  // coloraNumeriEstrattiCartella(elemento : any) {
+  //   let isEstratto = false
 
-    this.controllaNumeriEstratti()
 
-    for (let item = 0 ; item < this.numeriEstrattiCartella.length ; item++) {
-      if (elemento == this.numeriEstrattiCartella[item]) {
-        isEstratto = true
-        break;
-      } else
-        isEstratto = false
-    }
+  //   for (let item = 0 ; item < this.numeriEstrattiCartella.length ; item++) {
+  //     if (elemento == this.numeriEstrattiCartella[item]) {
+  //       isEstratto = true
+  //       break;
+  //     } else
+  //       isEstratto = false
+  //   }
 
-    if (isEstratto)
-      return 'red'
-    else
-      return 'black'
-  }
+  //   if (isEstratto)
+  //     return 'red'
+  //   else
+  //     return 'black'
+  // }
 
-  controllaNumeriEstratti(){
-    for (let el = 0; el < this.cartella.length; el++) {
-      if (this.numeroEstratto == this.cartella[el])
-        this.numeriEstrattiCartella.push(this.numeroEstratto)
-    }
-  }
+// ngOnChanges(changes:SimpleChange){
+//   console.log(changes);
+
+//   for (let el = 0; el < this.cartella.length; el++) {
+//     if (this.numeroEstratto === this.cartella[el])
+//       this.numeriEstrattiCartella.push(this.numeroEstratto)
+//       // console.log(this.numeriEstrattiCartella);
+//       console.log(changes.currentValue);
+
+//   }
+//   if (this.numeriEstrattiCartella.length== 15) {
+//     alert("hai vinto")
+
+//   }
+// }
+
+
+  // controllaNumeriEstratti(){
+  //   for (let el = 0; el < this.cartella.length; el++) {
+  //     if (this.numeroEstratto == this.cartella[el])
+  //       this.numeriEstrattiCartella.push(this.numeroEstratto)
+  //       console.log(this.numeriEstrattiCartella);
+
+  //   }
+  // }
 }
