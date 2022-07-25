@@ -22,12 +22,9 @@ export class TombolaComponent implements OnInit {
   numeroEstratto : number = 0
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = []
-  cartella : number[] = []
-  vettoreVittoria : number[] = []
 
   numeriDisponiili : number[] = []
   isReset = false
-
   giocatori : number[] = []
 
   constructor(private cdRef: ChangeDetectorRef) {
@@ -67,7 +64,10 @@ export class TombolaComponent implements OnInit {
   }
 
   aggiornoReset() {
-    this.isReset = false
+    setTimeout(() => {
+     this.isReset = false
+    }, 1000);
+
     this.cdRef.detectChanges();
   }
 
@@ -95,6 +95,7 @@ export class TombolaComponent implements OnInit {
       this.giocatori.push(item)
     }
   }
+
 
 }
 
