@@ -28,6 +28,8 @@ export class TombolaComponent implements OnInit {
   numeriDisponiili : number[] = []
   isReset = false
 
+  giocatori : number[] = []
+
   constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
@@ -67,12 +69,9 @@ export class TombolaComponent implements OnInit {
   aggiornoReset() {
     this.isReset = false
     this.cdRef.detectChanges();
-
-
   }
 
   estrazione() {
-    //this.numeroEstratto = Math.floor(Math.random() * this.numeriDisponiili.length)
     let indiceDaEliminare = 0
     indiceDaEliminare = Math.floor(Math.random() * this.numeriDisponiili.length)
     this.numeroEstratto = this.numeriDisponiili.splice(indiceDaEliminare, 1)[0]
@@ -89,6 +88,12 @@ export class TombolaComponent implements OnInit {
         return 'red';
     }
     return 'black'
+  }
+
+  giocatoriRegistrati(e : any) {
+    for (let item = 1 ; item <= e.target.value ; item++) {
+      this.giocatori.push(item)
+    }
   }
 
 }

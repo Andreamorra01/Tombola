@@ -14,6 +14,7 @@ export class SchedaComponent implements OnInit {
   cartella : number[] = []
   titleCartella = 'Cartella';
   numeriEstrattiCartella:number[] = []
+  nickname : string = ""
 
   @Input() numeroEstratto : number = 0 ;
   @Input() isReset : boolean = false;
@@ -89,7 +90,7 @@ export class SchedaComponent implements OnInit {
             console.log(changes['numeroEstratto'].currentValue);
         }
         if (this.numeriEstrattiCartella.length == 15) {
-          alert("hai vinto")
+          alert("Ha vinto il giocatore " + this.nickname)
           console.log(this.numeriEstrattiCartella);
 
 
@@ -110,12 +111,7 @@ export class SchedaComponent implements OnInit {
 
   }
 
-  // controllaNumeriEstratti(){
-  //   for (let el = 0; el < this.cartella.length; el++) {
-  //     if (this.numeroEstratto == this.cartella[el])
-  //       this.numeriEstrattiCartella.push(this.numeroEstratto)
-  //       console.log(this.numeriEstrattiCartella);
-
-  //   }
-  // }
+  registrazioneNome(e : any) {
+    this.nickname = e.target.value
+  }
 }

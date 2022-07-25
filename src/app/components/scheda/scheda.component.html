@@ -1,5 +1,6 @@
 <div class="cartella">
-  <h2>{{titleCartella}}</h2>
+  <input placeholder="Inserisci il tuo nickname" (keyup)="registrazioneNome($event)" >
+  <h2>{{titleCartella}} di {{nickname}}</h2>
   <ul class="ulCartella">
     <li *ngFor="let el of cartella">
       <span [ngStyle]="{color: coloraNumeriEstrattiCartella(el)}">{{el}}</span>
