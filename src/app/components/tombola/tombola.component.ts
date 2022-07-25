@@ -25,6 +25,8 @@ export class TombolaComponent implements OnInit {
   cartella : number[] = []
   vettoreVittoria : number[] = []
 
+  numeriDisponiili : number[] = []
+
   constructor() {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
@@ -38,6 +40,10 @@ export class TombolaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    for (let item = 1 ; item < 91 ; item++)
+      this.numeriDisponiili.push(item)
+    console.log("Numeri disponibili: " + this.numeriDisponiili)
+
     this.riempiTabellone()
     // this.generaCartella()
   }
@@ -48,21 +54,14 @@ export class TombolaComponent implements OnInit {
   }
 
   estrazione() {
-    this.numeroEstratto = 1 + Math.floor(Math.random() * 15)
-    for (let item = 0 ; item <= this.vettoreNumeriEstratti.length ; item++) {
-      if (this.numeroEstratto == this.vettoreNumeriEstratti[item]) {
-        this.isPresente = true
-        break;
-      }else{
-        this.isPresente = false
-      }
-      // console.log("ITEM: " + item)
-    }
-    if(!this.isPresente) {
-      this.vettoreNumeriEstratti.push(this.numeroEstratto)
-      // this.vittoria(this.numeroEstratto)
-    }
-    // console.log(this.vettoreNumeriEstratti)
+    //this.numeroEstratto = Math.floor(Math.random() * this.numeriDisponiili.length)
+    let indiceDaEliminare = 0
+    indiceDaEliminare = Math.floor(Math.random() * this.numeriDisponiili.length)
+    this.numeroEstratto = this.numeriDisponiili.splice(indiceDaEliminare, 1)[0]
+    // console.log("INDICE DA ELIMINARE: " + indiceDaEliminare)
+    // console.log("VETTORE AGGIORNATO: " + this.numeriDisponiili);
+    this.vettoreNumeriEstratti.push(this.numeroEstratto)
+
   }
 
   controllo(valoreDaControllare: number) {
