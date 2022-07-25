@@ -40,17 +40,24 @@ export class TombolaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let item = 1 ; item < 91 ; item++)
-      this.numeriDisponiili.push(item)
-    console.log("Numeri disponibili: " + this.numeriDisponiili)
-
+    this.generaDisponibili()
     this.riempiTabellone()
-    // this.generaCartella()
   }
+  generaDisponibili(){
+    for (let item = 1 ; item < 91 ; item++)
+    this.numeriDisponiili.push(item)
+    console.log("Numeri disponibili: " + this.numeriDisponiili)
+  }
+
   riempiTabellone() {
     for (let item = 1 ; item < 91 ; item ++) {
       this.numeri.push(item)
     }
+  }
+
+  reset(){
+    this.vettoreNumeriEstratti = []
+    this.numeroEstratto = 0
   }
 
   estrazione() {
@@ -61,7 +68,7 @@ export class TombolaComponent implements OnInit {
     // console.log("INDICE DA ELIMINARE: " + indiceDaEliminare)
     // console.log("VETTORE AGGIORNATO: " + this.numeriDisponiili);
     this.vettoreNumeriEstratti.push(this.numeroEstratto)
-
+    console.log(this.vettoreNumeriEstratti)
   }
 
   controllo(valoreDaControllare: number) {
@@ -72,59 +79,5 @@ export class TombolaComponent implements OnInit {
     return 'black'
   }
 
-  // generaCartella() {
-  //   let isEsistente = true
-  //   let random = 0
-  //   for (let item = 0 ; item < 15 ; item++) {
-  //     random = 1 + Math.floor(Math.random() * 15)
-  //     // console.log("Numero Random: " + random)
-  //     if (item == 0)
-  //       this.cartella.push(random)
-  //     else
-  //       for (let index = 0 ; index < this.cartella.length ; index++) {
-  //         if (random == this.cartella[index]) {
-  //           isEsistente = true
-  //           item--
-  //           break;
-  //         } else {
-  //           isEsistente = false
-  //         }
-  //       }
-  //       if (!isEsistente)
-  //         this.cartella.push(random)
-  //   }
-
-  // }
-
-  // controlloCartella(elemento : any) {
-  //   let isEstratto = false
-  //   // console.log(elementoCliccato)
-  //   for (let item = 0 ; item < this.vettoreNumeriEstratti.length ; item++) {
-  //     if (elemento == this.vettoreNumeriEstratti[item]) {
-  //       isEstratto = true
-  //       break;
-  //     } else
-  //       isEstratto = false
-  //   }
-
-  //   if (isEstratto)
-  //     return 'red'
-  //   else
-  //     return 'black'
-  // }
-
-  // vittoria(numeroEstratto : number) {
-  //   for (let item = 0 ; item < this.cartella.length ; item ++) {
-  //     // for (let elem = 0 ; elem < this.vettoreNumeriEstratti.length ; elem++) {
-  //       if (this.cartella[item] == numeroEstratto) {
-  //         this.vettoreVittoria.push(this.cartella[item])
-  //         // console.log(vettore)
-  //       //}
-  //     }
-  //   }
-  //   if (this.vettoreVittoria.length == 15) {
-  //     alert("Hai vinto")
-  //   }
-  // }
 }
 
