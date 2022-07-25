@@ -62,6 +62,7 @@ export class TombolaComponent implements OnInit {
     this.isReset = true
     this.numeriDisponiili = []
     this.generaDisponibili()
+    this.giocatori = []
   }
 
   aggiornoReset() {
@@ -95,6 +96,7 @@ export class TombolaComponent implements OnInit {
     console.log(this.numeroGiocatori)
   }
   giocatoriRegistrati() {
+    this.giocatori = []
     for (let item = 1 ; item <= this.numeroGiocatori ; item++) {
       this.giocatori.push(item)
       console.log(item);
