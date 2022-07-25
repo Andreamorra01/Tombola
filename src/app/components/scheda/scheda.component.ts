@@ -105,8 +105,6 @@ export class SchedaComponent implements OnInit {
         this.cartellaCambiata.emit(true);
         console.log(this.cartella);
       }
-
-
     }
 
   }
