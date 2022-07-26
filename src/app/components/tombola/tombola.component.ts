@@ -1,10 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { bindCallback } from 'rxjs';
 
 @Component({
   selector: 'app-tombola',
   templateUrl: './tombola.component.html',
-  styleUrls: ['./tombola.component.css']
+  styleUrls: ['./tombola.component.scss']
 })
 
 export class TombolaComponent implements OnInit {

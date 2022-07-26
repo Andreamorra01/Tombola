@@ -3,7 +3,7 @@ import { Component, OnInit,Input,SimpleChanges, Output, EventEmitter } from '@an
 @Component({
   selector: 'app-scheda',
   templateUrl: './scheda.component.html',
-  styleUrls: ['./scheda.component.css']
+  styleUrls: ['./scheda.component.scss']
 })
 export class SchedaComponent implements OnInit {
   colsCartella = 5;
