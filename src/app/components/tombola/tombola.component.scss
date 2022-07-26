@@ -1,3 +1,25 @@
+$colorButtonConferma: green;
+$textButton: white;
+$borderButtonConferma: 25px;
+$spazioButtonConferma: 10px;
+
+$colorButtonReset: red;
+
+
+
+.buttonConferma{
+  background-color:$colorButtonConferma;
+  color: $textButton;
+  border-radius: $borderButtonConferma;
+  margin-left: $spazioButtonConferma;
+}
+.buttonReset{
+  background-color:$colorButtonReset;
+  color: $textButton;
+  border-radius: $borderButtonConferma;
+  margin-left: $spazioButtonConferma;
+}
+
 p {
   font-family: Lato;
 }
@@ -21,8 +43,6 @@ li {
 
 }
 
-
-
 h2 {
   text-align:center;
   border:1px solid lightgray;
@@ -33,26 +53,3 @@ h2 {
   border-bottom:0;
 }
 
-
-/* .cartella {
-  margin-top: 100px;
-  width:100%;
-}
-
-.ulCartella {
-  display:grid;
-  grid-template-rows: repeat(var(--rowsCartella), var(--heightCartella));
-  grid-template-columns: repeat(var(--colsCartella), auto);
-  list-style:none;
-  width:100%;
-  padding:0;
-  margin:0;
-} */
-
-.spazioBottone {
-  margin-left: 10px
-}
-
-.spazioSuperiore {
-  margin-top: 5px;
-}
