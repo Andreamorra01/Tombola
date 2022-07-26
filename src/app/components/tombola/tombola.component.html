@@ -1,9 +1,12 @@
+
 <input type="text" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)">
-<button (click)="giocatoriRegistrati()">Conferma</button>
+<!-- <button (click)="giocatoriRegistrati()">Conferma</button> -->
+<button (click)="giocatoriRegistrati()" type="button" class="btn btn-success">Conferma</button>
+
 
 <div>
-  <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()">Estrai un numero</button>
-  <button (click)="reset()">Reset</button>
+  <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()" class="btn btn-dark">Estrai un numero</button>
+  <button (click)="reset()" class="btn btn-danger">Reset</button>
 
   <h3>{{ numeroEstratto }}</h3>
   <h2>{{title}}</h2>
