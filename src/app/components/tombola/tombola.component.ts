@@ -10,7 +10,7 @@ export class TombolaComponent implements OnInit {
   cols = 10;
   rows = 9;
   height = '15%';
-  title = 'Tombola';
+  title = 'Tabellone';
 
   isPresente : boolean = true
   numeroEstratto : number = 0

@@ -3,8 +3,11 @@ $textButton: white;
 $borderButtonConferma: 25px;
 $spazioButtonConferma: 10px;
 
-$colorButtonReset: red;
+$fontSizeButton: 17px;
 
+$colorButtonReset: red;
+$colorButtonEstrai: black;
+$margin : 10px;
 
 
 .buttonConferma{
@@ -12,12 +15,27 @@ $colorButtonReset: red;
   color: $textButton;
   border-radius: $borderButtonConferma;
   margin-left: $spazioButtonConferma;
+  font-size: $fontSizeButton;
+  margin-top: $margin;
 }
 .buttonReset{
   background-color:$colorButtonReset;
   color: $textButton;
   border-radius: $borderButtonConferma;
   margin-left: $spazioButtonConferma;
+  font-size: $fontSizeButton;
+  margin-top: $margin;
+}
+.buttonEstrai {
+  background-color:$colorButtonEstrai;
+  color: $textButton;
+  border-radius: $borderButtonConferma;
+  margin-left: $spazioButtonConferma;
+  font-size: $fontSizeButton;
+  margin-top: $margin;
+}
+.inputGiocatori {
+  font-size: $fontSizeButton;
 }
 
 p {
@@ -53,3 +71,10 @@ h2 {
   border-bottom:0;
 }
 
+.centrale {
+  text-align: center;
+}
+
+h1 {
+  text-shadow: 0 0 3px #FF0000;
+}
