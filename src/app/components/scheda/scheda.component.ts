@@ -21,7 +21,6 @@ export class SchedaComponent implements OnInit {
   @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
   @Output() nomeVincitore: EventEmitter<string> = new EventEmitter()
 
-
   constructor() {
     this.setStyle('--rowsCartella', this.rowsCartella);
     this.setStyle('--colsCartella', this.colsCartella);
@@ -93,8 +92,6 @@ export class SchedaComponent implements OnInit {
           alert("Ha vinto il giocatore " + this.nickname)
           // console.log(this.numeriEstrattiCartella);
           this.nomeVincitore.emit(this.nickname)
-
-
         }
       }
     }

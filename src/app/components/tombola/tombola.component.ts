@@ -13,11 +13,6 @@ export class TombolaComponent implements OnInit {
   height = '15%';
   title = 'Tombola';
 
-  colsCartella = 5;
-  rowsCartella = 3;
-  heightCartella = '45%';
-  titleCartella = 'Cartella';
-
   isPresente : boolean = true
   numeroEstratto : number = 0
   numeri : number[] = [];
@@ -35,6 +30,7 @@ export class TombolaComponent implements OnInit {
     //   numeroMosse : 0
     // }
   ]
+  bottonoDisabilitato:boolean = false
 
   contatorePartite : number = 0
   contatoreMosse : number = 0
@@ -43,9 +39,6 @@ export class TombolaComponent implements OnInit {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
     this.setStyle('--height', this.height);
-    this.setStyle('--rowsCartella', this.rowsCartella);
-    this.setStyle('--colsCartella', this.colsCartella);
-    this.setStyle('--heightCartella', this.heightCartella);
   }
   setStyle(s: any, v: any) {
     document.documentElement.style.setProperty(s, v);
@@ -74,8 +67,8 @@ export class TombolaComponent implements OnInit {
     this.numeriDisponiili = []
     this.generaDisponibili()
     this.giocatori = []
-
     this.contatoreMosse = 0
+    this.bottonoDisabilitato = false
   }
 
   aggiornoReset() {
@@ -90,11 +83,8 @@ export class TombolaComponent implements OnInit {
     let indiceDaEliminare = 0
     indiceDaEliminare = Math.floor(Math.random() * this.numeriDisponiili.length)
     this.numeroEstratto = this.numeriDisponiili.splice(indiceDaEliminare, 1)[0]
-    // console.log("INDICE DA ELIMINARE: " + indiceDaEliminare)
-    // console.log("VETTORE AGGIORNATO: " + this.numeriDisponiili);
     this.vettoreNumeriEstratti.push(this.numeroEstratto)
-    console.log(this.vettoreNumeriEstratti)
-    console.log("LUNGHEZZA: " + this.numeriDisponiili.length)
+
     this.contatoreMosse++
     console.log("CONTATORE MOSSE EFFETTUATE: " + this.contatoreMosse)
   }
@@ -119,6 +109,7 @@ export class TombolaComponent implements OnInit {
   }
 
   stampaTabella(nome : string) {
+    this.bottonoDisabilitato = true
     console.log("NOME VINCITORE: " + nome)
     this.contatorePartite++
     this.storicoPartite.push({
@@ -126,7 +117,6 @@ export class TombolaComponent implements OnInit {
       nomeVincitore : nome,
       numeroMosse : this.contatoreMosse
     })
-
     this.cdRef.detectChanges();
     console.log(this.storicoPartite)
   }

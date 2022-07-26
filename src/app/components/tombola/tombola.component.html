@@ -12,7 +12,7 @@
 </div>
 
 <div>
-  <button (click)="estrazione()">Estrai un numero</button>
+  <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()">Estrai un numero</button>
   <button (click)="reset()">Reset</button>
 
   <h3>{{ numeroEstratto }}</h3>
