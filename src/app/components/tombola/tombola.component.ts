@@ -30,7 +30,7 @@ export class TombolaComponent implements OnInit {
   // fb: any = myFormArray()
   // newArrayForm : any
 
-
+//ahah
   constructor(private cdRef: ChangeDetectorRef , private location:Location) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
