@@ -9,22 +9,23 @@ $colorButtonReset: red;
 $colorButtonEstrai: black;
 $margin : 10px;
 
-
-.buttonConferma{
-  background-color:$colorButtonConferma;
+.button{
   color: $textButton;
   border-radius: $borderButtonConferma;
   margin-left: $spazioButtonConferma;
   font-size: $fontSizeButton;
   margin-top: $margin;
 }
+
+
+.buttonConferma{
+  background-color:$colorButtonConferma;
+  @extend .button;
+}
+
 .buttonReset{
   background-color:$colorButtonReset;
-  color: $textButton;
-  border-radius: $borderButtonConferma;
-  margin-left: $spazioButtonConferma;
-  font-size: $fontSizeButton;
-  margin-top: $margin;
+  @extend .button
 }
 .buttonEstrai {
   background-color:$colorButtonEstrai;
@@ -77,4 +78,8 @@ h2 {
 
 h1 {
   text-shadow: 0 0 3px #FF0000;
+}
+
+.background{
+  background-color:cornflowerblue
 }

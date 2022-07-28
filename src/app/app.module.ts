@@ -5,16 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TombolaComponent } from './components/tombola/tombola.component';
 import { SchedaComponent } from './components/scheda/scheda.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormgiocatoriComponent } from './components/formgiocatori/formgiocatori.component';
 @NgModule({
   declarations: [
     AppComponent,
     TombolaComponent,
-    SchedaComponent
+    SchedaComponent,
+    FormgiocatoriComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

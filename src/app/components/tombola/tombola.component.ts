@@ -1,4 +1,7 @@
+import { FormArray, Validators, FormControl } from '@angular/forms';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { myFormArray } from '../arrayForm';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tombola',
@@ -9,32 +12,26 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 export class TombolaComponent implements OnInit {
   cols = 10;
   rows = 9;
-  height = '15%';
+  height = '35px';
   title = 'Tabellone';
-
   isPresente : boolean = true
   numeroEstratto : number = 0
   numeri : number[] = [];
   vettoreNumeriEstratti : number[] = []
-
   numeriDisponiili : number[] = []
   isReset = false
   giocatori : number[] = []
   numeroGiocatori :number = 0
-
-  storicoPartite : Tabella[] = [
-    // {
-    //   numeroPartita : 0,
-    //   nomeVincitore : "",
-    //   numeroMosse : 0
-    // }
-  ]
+  storicoPartite : Tabella[] = []
   bottonoDisabilitato:boolean = false
-
   contatorePartite : number = 0
   contatoreMosse : number = 0
+  data: any
+  // fb: any = myFormArray()
+  // newArrayForm : any
 
-  constructor(private cdRef: ChangeDetectorRef) {
+
+  constructor(private cdRef: ChangeDetectorRef , private location:Location) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
     this.setStyle('--height', this.height);
@@ -42,11 +39,33 @@ export class TombolaComponent implements OnInit {
   setStyle(s: any, v: any) {
     document.documentElement.style.setProperty(s, v);
   }
+  // stampa(){
+  //   console.log(this.fb.get('name').value)
+  // }
+
+  // getName(){
+  //     this.newArrayForm = this.fb.get('name') as FormArray
+  //     console.log(this.newArrayForm);
+  // }
+
+  //   addName(){
+  //   let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
+  //   this.newArrayForm.push(nameForm)
+  //   console.log(this.newArrayForm.value);
+  // }
+
 
   ngOnInit(): void {
     this.generaDisponibili()
     this.riempiTabellone()
+    this.data = this.location.getState()
+    console.log("sono qui nella tombola" +  this.data.value);
+
+    // this.fb
+    // this.getName()
   }
+
+
   generaDisponibili(){
     for (let item = 1 ; item < 91 ; item++)
       this.numeriDisponiili.push(item)

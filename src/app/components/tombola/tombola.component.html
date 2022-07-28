@@ -1,32 +1,46 @@
-<div class="centrale">
-  <h1>LA TOMBOLA</h1>
-  <input type="text" class="inputGiocatori" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)"> <br>
-  <button (click)="giocatoriRegistrati()" type="button" class="buttonConferma">Conferma</button> <br>
-  <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()" class="buttonEstrai">Estrai</button>
-  <button (click)="reset()" class="buttonReset">Reset</button>
-  <h1>{{ numeroEstratto }}</h1>
-</div>
-
-
-
 <div>
-  <h2>{{title}}</h2>
-  <ul>
-    <li *ngFor="let item of numeri">
+    <div class="centrale">
+      <h1>LA TOMBOLA</h1>
+      <!-- <input type="text" class="inputGiocatori" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)"> <br> -->
+      <!-- <button (click)="giocatoriRegistrati()" type="button" class="buttonConferma">Conferma</button> <br> -->
+      <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()" class="buttonEstrai">Estrai</button>
+      <button (click)="reset()" class="buttonReset">Reset</button>
+      <h1>{{ numeroEstratto }}</h1>
+    </div>
 
-      <span [ngStyle]="{color: controllo(item)}">{{item}}</span>
+    <div>
+      <h2>{{title}}</h2>
+      <ul>
+        <li *ngFor="let item of numeri">
 
-    </li>
-  </ul>
-</div>
-<div *ngFor="let item of giocatori">
-  <app-scheda [numeroEstratto]="numeroEstratto" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
-</div>
-<!-- <h1>{{numeroEstratto}}</h1> -->
-<br>
-<br>
-<div>
-  <div *ngFor="let item of storicoPartite">
-    <h3>Numero partita : {{ item.numeroPartita }}. Nome vincitore : {{ item.nomeVincitore }}. Numero mosse effettuate : {{item.numeroMosse }}.</h3>
+          <span [ngStyle]="{color: controllo(item)}">{{item}}</span>
+
+        </li>
+      </ul>
+    </div>
+    <div *ngFor="let item of giocatori">
+    </div>
+    <div>
+      <div *ngFor="let item of storicoPartite">
+        <h3>Numero partita : {{ item.numeroPartita }}. Nome vincitore : {{ item.nomeVincitore }}. Numero mosse effettuate : {{item.numeroMosse }}.</h3>
+      </div>
+    </div>
+<!--
+    <div [formGroup]="fb">
+      <div formArrayName="name">
+        <div *ngFor="let item of newArrayForm.controls; let i = index">
+          <input [formControlName]="i"  type="text" placeholder="inserisci nome">
+          <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
+            <small>almeno 3 caratteri</small>
+          </span>
+          <app-scheda [numeroEstratto]="numeroEstratto"  [nickname]="item.value" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
+        </div>
+      </div>
+    </div>
+    <button [disabled]="fb.invalid" (click)="addName()">Aggiungi</button> -->
+
+
+
+
   </div>
-</div>
+

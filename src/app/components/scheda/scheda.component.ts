@@ -8,14 +8,13 @@ import { Component, OnInit,Input,SimpleChanges, Output, EventEmitter } from '@an
 export class SchedaComponent implements OnInit {
   colsCartella = 5;
   rowsCartella = 3;
-  heightCartella = '45%';
+  heightCartella = '40px';
 
 
   cartella : number[] = []
   titleCartella = 'Cartella';
   numeriEstrattiCartella:number[] = []
-  nickname : string = ""
-
+  @Input() nickname : string = ""
   @Input() numeroEstratto : number = 0 ;
   @Input() isReset : boolean = false;
   @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
@@ -106,8 +105,7 @@ export class SchedaComponent implements OnInit {
     }
 
   }
-
-  registrazioneNome(e : any) {
-    this.nickname = e.target.value
-  }
+  // registrazioneNome(e : any) {
+  //   this.nickname = e.target.value
+  // }
 }
