@@ -1,13 +1,15 @@
-<div class="mettiCentrale"    [formGroup]="fb">
+<h1 style="color:red" >Inserisci il tuo nome e gioca a tombola con noi!</h1>
+<div class="mettiCentrale" [formGroup]="fb">
   <div formArrayName="name">
     <div *ngFor="let item of newArrayForm.controls; let i = index">
-      <input [formControlName]="i"  type="text" placeholder="Inserisci nome">
+      <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome">
       <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
         <br>
         <small class="rosso">Almeno 3 caratteri</small>
       </span>
+      <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">+</button>
     </div>
-    <button [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
-    <button [disabled]="giocatori<1"  (click)="sendForm()">Gioca</button>
+    <button class="bottonGioca" [disabled]="giocatori<1"  (click)="sendForm()">Gioca</button>
   </div>
 </div>
+

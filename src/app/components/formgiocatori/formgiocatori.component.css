@@ -1,8 +1,25 @@
 .mettiCentrale{
-  margin-top: 100px;
+  margin-top: 180px;
   text-align: center;
 }
 
 .rosso {
   color: red
+}
+.bottonoCircolare{
+  background-color: black;
+  border-radius: 10px;
+  color: red;
+}
+
+.bottonGioca{
+  border-radius: 15px;
+  color: red;
+  background-color: yellow;
+}
+.inputInserimento{
+  font-size: 16px;
+  border-radius: 15px;
+  width: 1000;
+
 }
