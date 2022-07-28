@@ -1,3 +1,4 @@
+import { SendformService } from './../../sendform.service';
 import { FormArray, Validators, FormControl } from '@angular/forms';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { myFormArray } from '../arrayForm';
@@ -27,11 +28,12 @@ export class TombolaComponent implements OnInit {
   contatorePartite : number = 0
   contatoreMosse : number = 0
   data: any
+  receivedMessage: string [] = []
   // fb: any = myFormArray()
   // newArrayForm : any
 
 //ahah
-  constructor(private cdRef: ChangeDetectorRef , private location:Location) {
+  constructor(private cdRef: ChangeDetectorRef , private location:Location, private sendForm: SendformService) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
     this.setStyle('--height', this.height);
@@ -53,13 +55,18 @@ export class TombolaComponent implements OnInit {
   //   this.newArrayForm.push(nameForm)
   //   console.log(this.newArrayForm.value);
   // }
-
-
+  riceviForm(){
+    this.sendForm.receivedMessage().subscribe((d)=>{
+      console.log(d);
+      this.receivedMessage = d
+    })
+  }
   ngOnInit(): void {
     this.generaDisponibili()
     this.riempiTabellone()
     this.data = this.location.getState()
     console.log("sono qui nella tombola" +  this.data.value);
+    this.riceviForm()
 
     // this.fb
     // this.getName()

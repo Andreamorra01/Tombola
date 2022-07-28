@@ -1,5 +1,4 @@
-
-   <div [formGroup]="fb">
+   <div class="mettiCentrale"    [formGroup]="fb">
       <div formArrayName="name">
         <div *ngFor="let item of newArrayForm.controls; let i = index">
           <input [formControlName]="i"  type="text" placeholder="inserisci nome">
@@ -8,7 +7,7 @@
           </span>
           <!-- <app-scheda [numeroEstratto]="numeroEstratto"  [nickname]="item.value" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda> -->
         </div>
+        <button [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
+        <button [disabled]="giocatori<2"  (click)="sendForm()">Gioca</button>
       </div>
     </div>
-    <button [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
-    <button [disabled]="giocatori<2"  (click)="passForm()">Gioca</button>
