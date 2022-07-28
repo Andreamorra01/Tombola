@@ -1,2 +1,202 @@
-/* You can add global styles to this file, and also import other style files */
-// @import "~bootstrap/dist/css/bootstrap.css"
+.my-container{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-gap: 5px;
+}
+
+
+@media screen and (min-width: 0px) {
+  .my-col-1{
+    grid-column: span 1;
+  }
+  .my-col-2{
+    grid-column: span 2;
+  }
+  .my-col-3{
+    grid-column: span 3;
+  }
+  .my-col-4{
+    grid-column: span 4;
+  }
+  .my-col-5{
+    grid-column: span 5;
+  }
+  .my-col-6{
+    grid-column: span 6;
+  }
+  .my-col-7{
+    grid-column: span 7;
+  }
+  .my-col-8{
+    grid-column: span 8;
+  }
+  .my-col-9{
+    grid-column: span 8;
+  }
+  .my-col-10{
+    grid-column: span 10;
+  }
+  .my-col-11{
+    grid-column: span 11;
+  }
+  .my-col-12{
+    grid-column: span 12;
+  }
+
+}
+
+@media screen and (min-width: 576px) {
+  .my-col-sm-1{
+    grid-column: span 1;
+  }
+  .my-col-sm-2{
+    grid-column: span 2;
+  }
+  .my-col-sm-3{
+    grid-column: span 3;
+  }
+  .my-col-sm-4{
+    grid-column: span 4;
+  }
+  .my-col-sm-5{
+    grid-column: span 5;
+  }
+  .my-col-sm-6{
+    grid-column: span 6;
+  }
+  .my-col-sm-7{
+    grid-column: span 7;
+  }
+  .my-col-sm-8{
+    grid-column: span 8;
+  }
+  .my-col-sm-9{
+    grid-column: span 9;
+  }
+  .my-col-sm-10{
+    grid-column: span 10;
+  }
+  .my-col-sm-11{
+    grid-column: span 11;
+  }
+  .my-col-sm-12{
+    grid-column: span 12;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .my-col-md-1{
+    grid-column: span 1;
+  }
+  .my-col-md-2{
+    grid-column: span 2;
+  }
+  .my-col-md-3{
+    grid-column: span 3;
+  }
+  .my-col-md-4{
+    grid-column: span 4;
+  }
+  .my-col-md-5{
+    grid-column: span 5;
+  }
+  .my-col-md-6{
+    grid-column: span 6;
+  }
+  .my-col-md-7{
+    grid-column: span 7;
+  }
+  .my-col-md-8{
+    grid-column: span 8;
+  }
+  .my-col-md-9{
+    grid-column: span 9;
+  }
+  .my-col-md-10{
+    grid-column: span 10;
+  }
+  .my-col-md-11{
+    grid-column: span 11;
+  }
+  .my-col-md-12{
+    grid-column: span 12;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .my-col-lg-1{
+    grid-column: span 1;
+  }
+  .my-col-lg-2{
+    grid-column: span 2;
+  }
+  .my-col-lg-3{
+    grid-column: span 3;
+  }
+  .my-col-lg-4{
+    grid-column: span 4;
+  }
+  .my-col-lg-5{
+    grid-column: span 5;
+  }
+  .my-col-lg-6{
+    grid-column: span 6;
+  }
+  .my-col-lg-7{
+    grid-column: span 7;
+  }
+  .my-col-lg-8{
+    grid-column: span 8;
+  }
+  .my-col-lg-9{
+    grid-column: span 9;
+  }
+  .my-col-lg-10{
+    grid-column: span 10;
+  }
+  .my-col-lg-11{
+    grid-column: span 11;
+  }
+  .my-col-lg-12{
+    grid-column: span 12;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .my-col-xl-1{
+    grid-column: span 1;
+  }
+  .my-col-xl-2{
+    grid-column: span 2;
+  }
+  .my-col-xl-3{
+    grid-column: span 3;
+  }
+  .my-col-xl-4{
+    grid-column: span 4;
+  }
+  .my-col-xl-5{
+    grid-column: span 5;
+  }
+  .my-col-xl-6{
+    grid-column: span 6;
+  }
+  .my-col-xl-7{
+    grid-column: span 7;
+  }
+  .my-col-xl-8{
+    grid-column: span 8;
+  }
+  .my-col-xl-9{
+    grid-column: span 9;
+  }
+  .my-col-xl-10{
+    grid-column: span 10;
+  }
+  .my-col-xl-11{
+    grid-column: span 11;
+  }
+  .my-col-xl-12{
+    grid-column: span 12;
+  }
+}
