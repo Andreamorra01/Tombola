@@ -6,7 +6,6 @@
         <br>
         <small class="rosso">Almeno 3 caratteri</small>
       </span>
-      <!-- <app-scheda [numeroEstratto]="numeroEstratto"  [nickname]="item.value" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda> -->
     </div>
     <button [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
     <button [disabled]="giocatori<1"  (click)="sendForm()">Gioca</button>

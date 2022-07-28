@@ -29,10 +29,7 @@ export class TombolaComponent implements OnInit {
   contatoreMosse : number = 0
   data: any
   receivedMessage: string [] = []
-  // fb: any = myFormArray()
-  // newArrayForm : any
 
-//ahah
   constructor(private cdRef: ChangeDetectorRef , private location:Location, private sendForm: SendformService) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
@@ -41,20 +38,7 @@ export class TombolaComponent implements OnInit {
   setStyle(s: any, v: any) {
     document.documentElement.style.setProperty(s, v);
   }
-  // stampa(){
-  //   console.log(this.fb.get('name').value)
-  // }
 
-  // getName(){
-  //     this.newArrayForm = this.fb.get('name') as FormArray
-  //     console.log(this.newArrayForm);
-  // }
-
-  //   addName(){
-  //   let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
-  //   this.newArrayForm.push(nameForm)
-  //   console.log(this.newArrayForm.value);
-  // }
   riceviForm(){
     this.sendForm.receivedMessage().subscribe((d)=>{
       console.log(d);
@@ -67,9 +51,6 @@ export class TombolaComponent implements OnInit {
     this.data = this.location.getState()
     console.log("sono qui nella tombola" +  this.data.value);
     this.riceviForm()
-
-    // this.fb
-    // this.getName()
   }
 
 
