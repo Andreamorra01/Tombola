@@ -1,7 +1,7 @@
 <div class="centrale">
   <h1>LA TOMBOLA</h1>
-  <input type="text" class="inputGiocatori" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)"> <br>
-  <button (click)="giocatoriRegistrati()" type="button" class="buttonConferma">Conferma</button> <br>
+  <!-- <input type="text" class="inputGiocatori" placeholder="Numero di giocatori" (keyup)="scegliNumeroGiocatori($event)"> <br>
+  <button (click)="giocatoriRegistrati()" type="button" class="buttonConferma">Conferma</button> <br> -->
   <button [disabled]="bottonoDisabilitato == true" (click)="estrazione()" class="buttonEstrai">Estrai</button>
   <button (click)="reset()" class="buttonReset">Reset</button>
   <h1>{{ numeroEstratto }}</h1>
@@ -19,10 +19,28 @@
     </li>
   </ul>
 </div>
-<div *ngFor="let item of giocatori">
-  <app-scheda [numeroEstratto]="numeroEstratto" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
+
+<div [formGroup]="form">
+  <div formArrayName="name">
+    <div *ngFor="let item of variabile.controls; let i = index">
+      <input [formControlName]="i" type="text" class="inputGiocatori" placeholder="Inserire nome">
+      <span *ngIf="item.invalid && item.dirty">
+        <small class="text-danger">This field is required</small>
+      </span>
+      <app-scheda [numeroEstratto]="numeroEstratto" [nickname]="item.value" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
+    </div>
+  </div> <br> <br>
 </div>
-<!-- <h1>{{numeroEstratto}}</h1> -->
+      <button [disabled]="form.invalid" (click)="addGiocatore()">Aggiungi</button><br>
+
+<!-- <button (click)="addGiocatore()">Aggiungi</button> -->
+
+
+
+<!-- <div *ngFor="let item of giocatori">
+  <app-scheda [numeroEstratto]="numeroEstratto" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
+</div> -->
+
 <br>
 <br>
 <div>

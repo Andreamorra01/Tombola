@@ -43,6 +43,7 @@ p {
 }
 
 ul {
+  height: 100%;
   display:grid;
   grid-template-rows: repeat(var(--rows), var(--height));
   grid-template-columns: repeat(var(--cols), auto);

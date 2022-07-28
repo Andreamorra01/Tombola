@@ -8,18 +8,20 @@ import { Component, OnInit,Input,SimpleChanges, Output, EventEmitter } from '@an
 export class SchedaComponent implements OnInit {
   colsCartella = 5;
   rowsCartella = 3;
-  heightCartella = '45%';
+  heightCartella = '40px';
 
 
   cartella : number[] = []
   titleCartella = 'Cartella';
   numeriEstrattiCartella:number[] = []
-  nickname : string = ""
+  // nickname : string = ""
 
   @Input() numeroEstratto : number = 0 ;
   @Input() isReset : boolean = false;
+  @Input() nickname : string = ''
   @Output() cartellaCambiata: EventEmitter<boolean> = new EventEmitter()
   @Output() nomeVincitore: EventEmitter<string> = new EventEmitter()
+
 
   constructor() {
     this.setStyle('--rowsCartella', this.rowsCartella);
@@ -32,12 +34,12 @@ export class SchedaComponent implements OnInit {
 
   ngOnInit(): void {
     this.generaCartella()
-    console.log("SONO NEL FIGLIO. RESET -> " + this.isReset)
+    // console.log("SONO NEL FIGLIO. RESET -> " + this.isReset)
   }
 
   generaCartella() {
     this.cartella = []
-    console.log("STO GENERANDO");
+    // console.log("STO GENERANDO");
 
     let isEsistente = true
     let random = 0
@@ -78,7 +80,7 @@ export class SchedaComponent implements OnInit {
   }
 
   ngOnChanges(changes:SimpleChanges){
-    console.log(changes);
+    // console.log(changes);
 
     if(changes['numeroEstratto']) {
       if(changes['numeroEstratto'].currentValue){
@@ -86,7 +88,7 @@ export class SchedaComponent implements OnInit {
           if (changes['numeroEstratto'].currentValue === this.cartella[el])
             this.numeriEstrattiCartella.push(changes['numeroEstratto'].currentValue)
             // console.log(this.numeriEstrattiCartella);
-            console.log(changes['numeroEstratto'].currentValue);
+            // console.log(changes['numeroEstratto'].currentValue);
         }
         if (this.numeriEstrattiCartella.length == 15) {
           alert("Ha vinto il giocatore " + this.nickname)

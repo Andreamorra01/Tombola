@@ -64,6 +64,10 @@ h2 {
   text-align: center;
 }
 
+.spaziatura {
+  margin-top: 500px;
+}
+
 h1 {
   text-shadow: 0 0 3px #FF0000;
 }/*# sourceMappingURL=tombola.component.css.map */

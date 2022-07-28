@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { createGiocatori } from 'src/app/arrayForm';
 
 @Component({
   selector: 'app-tombola',
@@ -9,7 +11,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 export class TombolaComponent implements OnInit {
   cols = 10;
   rows = 9;
-  height = '15%';
+  height = '35px';
   title = 'Tabellone';
 
   isPresente : boolean = true
@@ -34,6 +36,10 @@ export class TombolaComponent implements OnInit {
   contatorePartite : number = 0
   contatoreMosse : number = 0
 
+  form = createGiocatori()
+  variabile : any
+  nomeGiocatore : string = ''
+
   constructor(private cdRef: ChangeDetectorRef) {
     this.setStyle('--rows', this.rows);
     this.setStyle('--cols', this.cols);
@@ -46,7 +52,27 @@ export class TombolaComponent implements OnInit {
   ngOnInit(): void {
     this.generaDisponibili()
     this.riempiTabellone()
+
+    console.log(this.form.value)
+    this.getName()
   }
+
+  getName() {
+    this.variabile = this.form.get('name') as FormArray
+  }
+
+  aggiornamentoNome(event : any) {
+    this.nomeGiocatore = event.target.value
+  }
+
+  addGiocatore() {
+    let giocatore = new FormControl('', Validators.required)
+
+
+    this.variabile.push(giocatore)
+    console.log(this.variabile.value)
+  }
+
   generaDisponibili(){
     for (let item = 1 ; item < 91 ; item++)
       this.numeriDisponiili.push(item)
@@ -85,7 +111,7 @@ export class TombolaComponent implements OnInit {
     this.vettoreNumeriEstratti.push(this.numeroEstratto)
 
     this.contatoreMosse++
-    console.log("CONTATORE MOSSE EFFETTUATE: " + this.contatoreMosse)
+    // console.log("CONTATORE MOSSE EFFETTUATE: " + this.contatoreMosse)
   }
 
   controllo(valoreDaControllare: number) {
