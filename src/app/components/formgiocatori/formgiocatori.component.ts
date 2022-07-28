@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { myFormArray } from '../arrayForm';
 import { FormArray, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
+//
 
 @Component({
   selector: 'app-formgiocatori',
