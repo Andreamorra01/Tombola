@@ -1,9 +1,9 @@
 <h1 style="color:red" class="titolo" >Inserisci i partecipanti e gioca a tombola con noi!</h1>
-<div class="mettiCentrale rounded" [formGroup]="fb">
+<div style="background-color: yellow;" class="mettiCentrale rounded" [formGroup]="fb">
   <div formArrayName="name">
     <div *ngFor="let item of newArrayForm.controls; let i = index">
       <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome">
-      <!-- <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">+</button> -->
+      <!-- <button class="bottonoCircolare" [disabled]="item.invalid" (click)="addName()">+</button> -->
       <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
         <br>
         <small class="rosso">Almeno 3 caratteri</small>

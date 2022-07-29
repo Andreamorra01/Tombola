@@ -22,21 +22,20 @@ export class FormgiocatoriComponent implements OnInit {
 }
   addName(){
     let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
-    this.newArrayForm.push(nameForm)
+    this.newArrayForm.controls.push(nameForm)
     this.giocatori++
-    console.log("ci sono " +this.giocatori);
+    console.log(this.newArrayForm);
+    console.log(this.fb.invalid);
 
-    console.log(this.newArrayForm.value);
   }
-
   removeName() {
-    console.log("Sono qui")
     this.newArrayForm.controls.pop()
+    this.newArrayForm.value.pop()
     this.giocatori--
+    // console.log(this.newArrayForm)
   }
-
   sendForm(){
-    this.messageService.sendMessage(this.newArrayForm.value)
+    this.messageService.sendMessage(this.newArrayForm.controls.map((el: { value: any; })=> el.value))
     this.router.navigateByUrl('/tombola',)
   }
 
