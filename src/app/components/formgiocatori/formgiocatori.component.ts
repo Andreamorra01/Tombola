@@ -30,11 +30,9 @@ export class FormgiocatoriComponent implements OnInit {
   }
 
   removeName() {
-    console.log("REMOVE " + this.newArrayForm.value)
-    this.newArrayForm.push(1)
+    console.log("Sono qui")
+    this.newArrayForm.controls.pop()
     this.giocatori--
-
-    console.log("REMOVE " + this.newArrayForm)
   }
 
   sendForm(){

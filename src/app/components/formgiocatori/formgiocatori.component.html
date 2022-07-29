@@ -10,7 +10,7 @@
       </span>
     </div>
     <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">Add</button>
-    <button class="bottonoCircolare" (click)="removeName()">Remove</button>
+    <button class="bottonoCircolare" [disabled]="giocatori == 0" (click)="removeName()">Remove</button>
     <br>
     <button class="buttonGioca" [disabled]="giocatori<1"  (click)="sendForm()">Gioca</button>
   </div>
