@@ -1,0 +1,27 @@
+<div>
+  <h2>{{titleStorico}}</h2>
+  <ul class="ulStorico">
+    <li>
+      <span class="testi">Numero partita</span>
+    </li>
+    <li>
+      <span class="testi">Nome vincitore</span>
+    </li>
+    <li>
+      <span class="testi">Numero mosse</span>
+    </li>
+    <ng-container *ngFor="let item of storicoPartite">
+      <li>
+        {{ item.numeroPartita }}
+      </li>
+      <li>
+        {{ item.nomeVincitore }}
+      </li>
+      <li>
+        {{item.numeroMosse }}
+      </li>
+
+    </ng-container>
+  </ul>
+</div>
+

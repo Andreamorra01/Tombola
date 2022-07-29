@@ -129,7 +129,7 @@ export class TombolaComponent implements OnInit {
 
 }
 
-interface Tabella {
+export interface Tabella {
   numeroPartita : number,
   nomeVincitore : string,
   numeroMosse : number

@@ -3,11 +3,11 @@
   <div formArrayName="name">
     <div *ngFor="let item of newArrayForm.controls; let i = index">
       <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome">
+      <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">+</button>
       <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
         <br>
         <small class="rosso">Almeno 3 caratteri</small>
       </span>
-      <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">+</button>
     </div>
     <button class="bottonGioca" [disabled]="giocatori<1"  (click)="sendForm()">Gioca</button>
   </div>

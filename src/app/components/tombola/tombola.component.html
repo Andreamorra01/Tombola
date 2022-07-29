@@ -15,13 +15,15 @@
     </ul>
   </div>
 
-  <div>
+  <!-- <div>
     <div *ngFor="let item of storicoPartite">
       <h3>Numero partita : {{ item.numeroPartita }}. Nome vincitore : {{ item.nomeVincitore }}. Numero mosse effettuate : {{item.numeroMosse }}.</h3>
     </div>
-  </div>
+  </div> -->
 
   <span *ngFor="let i of receivedMessage">
     <app-scheda [numeroEstratto]="numeroEstratto" [nickname]="i" [isReset]="isReset" (cartellaCambiata)="aggiornoReset()" (nomeVincitore)="stampaTabella($event)"></app-scheda>
   </span>
 </div>
+
+<app-storico [storicoPartite]="storicoPartite"></app-storico>
