@@ -3,6 +3,18 @@
   text-align: center;
 }
 
+.titolo {
+  text-align: center;
+}
+
+.rounded {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 500px;
+  margin-right: 500px;
+  padding: 70px;
+}
+
 .rosso {
   color: red
 }
@@ -10,16 +22,24 @@
   background-color: black;
   border-radius: 10px;
   color: red;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
-.bottonGioca{
-  border-radius: 15px;
-  color: red;
-  background-color: yellow;
-}
 .inputInserimento{
-  font-size: 16px;
+  font-size: 17px;
   border-radius: 15px;
   width: 1000;
 
 }
+
+.buttonGioca {
+  background-color: green;
+  color: white;
+  border-radius: 25px;
+  margin-left: 10px;
+  font-size: 17px;
+  margin-top: 10px;
+}
+

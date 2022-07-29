@@ -29,6 +29,14 @@ export class FormgiocatoriComponent implements OnInit {
     console.log(this.newArrayForm.value);
   }
 
+  removeName() {
+    console.log("REMOVE " + this.newArrayForm.value)
+    this.newArrayForm.push(1)
+    this.giocatori--
+
+    console.log("REMOVE " + this.newArrayForm)
+  }
+
   sendForm(){
     this.messageService.sendMessage(this.newArrayForm.value)
     this.router.navigateByUrl('/tombola',)
