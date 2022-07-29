@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class FormgiocatoriComponent implements OnInit {
   fb: any = myFormArray()
   newArrayForm : any
-  giocatori : number = 0
+  giocatori : number = 1
 
   constructor(private router : Router, private messageService: SendformService) { }
   getName(){
@@ -22,23 +22,23 @@ export class FormgiocatoriComponent implements OnInit {
 }
   addName(){
     let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
-    this.newArrayForm.controls.push(nameForm)
+    this.newArrayForm.push(nameForm)
     this.giocatori++
-    console.log(this.newArrayForm);
-    console.log(this.fb.invalid);
+    console.log(this.newArrayForm.value);
+    // console.log(this.fb.invalid);
+    console.log(this.giocatori);
 
   }
   removeName() {
-    this.newArrayForm.controls.pop()
-    this.newArrayForm.value.pop()
+    this.newArrayForm.removeAt(this.newArrayForm.length -1)
     this.giocatori--
-    // console.log(this.newArrayForm)
+    console.log(this.giocatori);
+    console.log(this.newArrayForm.value)
   }
   sendForm(){
-    this.messageService.sendMessage(this.newArrayForm.controls.map((el: { value: any; })=> el.value))
+    this.messageService.sendMessage(this.newArrayForm.value)
     this.router.navigateByUrl('/tombola',)
   }
-
   ngOnInit(): void {
     this.getName()
   }
