@@ -5,32 +5,32 @@
   <div formArrayName="name" class="inputColonna">
       <!-- <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome"> -->
 
-        <mat-form-field style="width: 50%;" appearance="fill" *ngFor="let item of newArrayForm.controls; let i = index">
+    <mat-form-field style="width: 50%;" appearance="fill" *ngFor="let item of newArrayForm.controls; let i = index">
 
-          <input type="text"
-                 placeholder="Inserisci Nome"
-                 aria-label="Number"
-                 matInput
-                 (keyup)="funzioneEvent($event)"
-                 [formControlName]="i"
-                 [matAutocomplete]="auto">
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
+      <input type="text"
+              placeholder="Inserisci Nome"
+              aria-label="Number"
+              matInput
+              (keyup)="funzioneEvent($event)"
+              [formControlName]="i"
+              [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
 
-          <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
-            <br>
-            <small class="rosso">Almeno 3 caratteri</small>
-          </span>
-        </mat-form-field>
+      <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
+        <br>
+        <small class="rosso">Almeno 3 caratteri</small>
+      </span>
+    </mat-form-field>
 
 
       <!-- <button class="bottonoCircolare" [disabled]="item.invalid" (click)="addName()">+</button> -->
-    </div>
-    <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
-    <button class="bottonoCircolare" [disabled]="giocatori == 0" (click)="removeName()">Rimuovi</button>
-    <br>
-    <button class="buttonGioca" [disabled]="giocatori<1 || !fb.valid"  (click)="sendForm()">Gioca</button>
+  </div>
+  <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
+  <button class="bottonoCircolare" [disabled]="giocatori == 0" (click)="removeName()">Rimuovi</button>
+  <br>
+  <button class="buttonGioca" [disabled]="giocatori<1 || !fb.valid"  (click)="sendForm()">Gioca</button>
 </div>
