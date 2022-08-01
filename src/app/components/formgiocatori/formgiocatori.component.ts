@@ -18,6 +18,8 @@ export class FormgiocatoriComponent implements OnInit {
   giocatori : number = 1
 
   vettoreNomi = arrayName
+  nameForm = new FormControl
+  filteredOptions: Observable<string[]> | any
 
   constructor(private router : Router, private messageService: SendformService) { }
   getName(){
@@ -25,14 +27,14 @@ export class FormgiocatoriComponent implements OnInit {
     console.log(this.newArrayForm);
 }
   addName(){
-    let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
+    this.nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
 
-    let filteredOptions: Observable<string[]>;
-    filteredOptions = nameForm.valueChanges.pipe(
-      map(value => this._filter(value || '')),
+    this.filteredOptions = this.nameForm.valueChanges.pipe(
+      map(value => this._filter(value)),
     );
+    console.log("UE" + this.filteredOptions)
 
-    this.newArrayForm.push(nameForm)
+    this.newArrayForm.push(this.nameForm)
     this.giocatori++
     console.log(this.newArrayForm.value);
     // console.log(this.fb.invalid);

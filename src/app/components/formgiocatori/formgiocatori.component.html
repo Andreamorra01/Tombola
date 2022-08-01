@@ -2,9 +2,7 @@
 <div class="mettiCentrale rounded" [formGroup]="fb">
   <div formArrayName="name">
     <div *ngFor="let item of newArrayForm.controls; let i = index">
-      <input class="inputInserimento" [autocomplete]="" [formControlName]="i"  type="text" placeholder="Inserisci nome">
-
-
+      <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome">
 
       <!-- <button class="bottonoCircolare" [disabled]="item.invalid" (click)="addName()">+</button> -->
       <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
@@ -18,3 +16,22 @@
     <button class="buttonGioca" [disabled]="giocatori<1 || !fb.valid"  (click)="sendForm()">Gioca</button>
   </div>
 </div>
+
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Number</mat-label>
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [formControl]="nameForm"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

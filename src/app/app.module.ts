@@ -8,6 +8,12 @@ import { SchedaComponent } from './components/scheda/scheda.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormgiocatoriComponent } from './components/formgiocatori/formgiocatori.component';
 import { StoricoComponent } from './components/storico/storico.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatAutocompleteModule, } from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +25,10 @@ import { StoricoComponent } from './components/storico/storico.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
