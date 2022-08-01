@@ -24,15 +24,11 @@ export class FormgiocatoriComponent implements OnInit {
   constructor(private router : Router, private messageService: SendformService) { }
   getName(){
     this.newArrayForm = this.fb.get('name') as FormArray
-    console.log(this.newArrayForm);
+    // console.log(this.newArrayForm);
 }
   addName(){
     this.nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
 
-    this.filteredOptions = this.nameForm.valueChanges.pipe(
-      map(value => this._filter(value)),
-    );
-    console.log("UE" + this.filteredOptions)
 
     this.newArrayForm.push(this.nameForm)
     this.giocatori++
@@ -42,7 +38,7 @@ export class FormgiocatoriComponent implements OnInit {
 
   }
 
- _filter(value: string): string[] {
+  _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.vettoreNomi.filter(nome => nome.toLowerCase().includes(filterValue));
  }
@@ -59,6 +55,10 @@ export class FormgiocatoriComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getName()
+
+    this.filteredOptions = this.nameForm.valueChanges.pipe(
+      map(value => this._filter(value || '')),
+    );
   }
 
 

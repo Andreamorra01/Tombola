@@ -2,7 +2,27 @@
 <div class="mettiCentrale rounded" [formGroup]="fb">
   <div formArrayName="name">
     <div *ngFor="let item of newArrayForm.controls; let i = index">
-      <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome">
+      <!-- <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome"> -->
+
+
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="nameForm"
+                 [formControlName]="i"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
 
       <!-- <button class="bottonoCircolare" [disabled]="item.invalid" (click)="addName()">+</button> -->
       <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
@@ -19,9 +39,9 @@
 
 
 
-<form class="example-form">
+<!-- <form class="example-form">
   <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Number</mat-label>
+
     <input type="text"
            placeholder="Pick one"
            aria-label="Number"
@@ -29,9 +49,9 @@
            [formControl]="nameForm"
            [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions" [value]="option">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-</form>
+</form> -->
