@@ -1,18 +1,15 @@
 <h1 style="color:red" class="titolo" >Inserisci i partecipanti e gioca a tombola con noi!</h1>
 <div class="mettiCentrale rounded" [formGroup]="fb">
-  <div formArrayName="name">
-    <div *ngFor="let item of newArrayForm.controls; let i = index">
+  <div formArrayName="name" class="inputColonna">
       <!-- <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome"> -->
 
-
-      <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field style="width: 50%;" appearance="fill" *ngFor="let item of newArrayForm.controls; let i = index">
 
           <input type="text"
                  placeholder="Pick one"
                  aria-label="Number"
                  matInput
-                 [formControl]="nameForm"
+                 (keyup)="funzioneEvent($event)"
                  [formControlName]="i"
                  [matAutocomplete]="auto">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -20,38 +17,18 @@
               {{option}}
             </mat-option>
           </mat-autocomplete>
+
+          <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
+            <br>
+            <small class="rosso">Almeno 3 caratteri</small>
+          </span>
         </mat-form-field>
-      </form>
 
 
       <!-- <button class="bottonoCircolare" [disabled]="item.invalid" (click)="addName()">+</button> -->
-      <span *ngIf="item.invalid && item?.hasError('minlength') && (item.dirty || item.touched) ">
-        <br>
-        <small class="rosso">Almeno 3 caratteri</small>
-      </span>
     </div>
     <button class="bottonoCircolare" [disabled]="fb.invalid" (click)="addName()">Aggiungi</button>
     <button class="bottonoCircolare" [disabled]="giocatori == 0" (click)="removeName()">Rimuovi</button>
     <br>
     <button class="buttonGioca" [disabled]="giocatori<1 || !fb.valid"  (click)="sendForm()">Gioca</button>
-  </div>
 </div>
-
-
-
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-
-    <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [formControl]="nameForm"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form> -->

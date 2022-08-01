@@ -4,7 +4,7 @@ import { myFormArray } from '../arrayForm';
 import { FormArray, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { arrayName } from 'src/mock-names';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 //
 
 @Component({
@@ -55,12 +55,12 @@ export class FormgiocatoriComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getName()
-
-    this.filteredOptions = this.nameForm.valueChanges.pipe(
-      map(value => this._filter(value || '')),
-    );
   }
 
-
+  funzioneEvent(e: any) {
+    this.filteredOptions = of(e.target.value).pipe(
+      map(value => this._filter(value)),
+    );
+  }
 
 }
