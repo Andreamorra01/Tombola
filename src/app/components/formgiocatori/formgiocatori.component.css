@@ -1,7 +1,8 @@
 .mettiCentrale{
-  margin-top: 150px;
+  margin-top: 100px;
   text-align: center;
 }
+
 
 .titolo {
   text-align: center;
@@ -9,10 +10,11 @@
 
 .rounded {
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 30px;
   margin-left: 400px;
   margin-right: 400px;
   padding: 70px;
+  width: 25%;
 }
 
 .rosso {

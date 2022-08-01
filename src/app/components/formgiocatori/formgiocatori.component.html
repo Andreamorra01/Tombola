@@ -1,12 +1,14 @@
 <h1 style="color:red" class="titolo" >Inserisci i partecipanti e gioca a tombola con noi!</h1>
-<div class="mettiCentrale rounded" [formGroup]="fb">
+
+<div style="background-color: rgba(204, 165, 74, 0.886);" class="mettiCentrale rounded" [formGroup]="fb">
+  <h1 style="font-weight: bold;">Gioca a bingo!</h1>
   <div formArrayName="name" class="inputColonna">
       <!-- <input class="inputInserimento" [formControlName]="i"  type="text" placeholder="Inserisci nome"> -->
 
         <mat-form-field style="width: 50%;" appearance="fill" *ngFor="let item of newArrayForm.controls; let i = index">
 
           <input type="text"
-                 placeholder="Pick one"
+                 placeholder="Inserisci Nome"
                  aria-label="Number"
                  matInput
                  (keyup)="funzioneEvent($event)"
