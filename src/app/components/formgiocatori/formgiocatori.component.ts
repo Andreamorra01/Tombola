@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { myFormArray } from '../arrayForm';
 import { FormArray, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { arrayName } from 'src/mock-names';
+import { map, Observable } from 'rxjs';
 //
 
 @Component({
@@ -15,6 +17,8 @@ export class FormgiocatoriComponent implements OnInit {
   newArrayForm : any
   giocatori : number = 1
 
+  vettoreNomi = arrayName
+
   constructor(private router : Router, private messageService: SendformService) { }
   getName(){
     this.newArrayForm = this.fb.get('name') as FormArray
@@ -22,6 +26,12 @@ export class FormgiocatoriComponent implements OnInit {
 }
   addName(){
     let nameForm = new FormControl("", [Validators.required, Validators.minLength(3)])
+
+    let filteredOptions: Observable<string[]>;
+    filteredOptions = nameForm.valueChanges.pipe(
+      map(value => this._filter(value || '')),
+    );
+
     this.newArrayForm.push(nameForm)
     this.giocatori++
     console.log(this.newArrayForm.value);
@@ -29,6 +39,12 @@ export class FormgiocatoriComponent implements OnInit {
     console.log(this.giocatori);
 
   }
+
+ _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.vettoreNomi.filter(nome => nome.toLowerCase().includes(filterValue));
+ }
+
   removeName() {
     this.newArrayForm.removeAt(this.newArrayForm.length -1)
     this.giocatori--
@@ -42,5 +58,7 @@ export class FormgiocatoriComponent implements OnInit {
   ngOnInit(): void {
     this.getName()
   }
+
+
 
 }
